@@ -1,0 +1,118 @@
+<!--- NOTES
+to generate pages from csv : https://github.com/avillafiorita/jekyll-datapage_gen
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+
+<!--story map styles -->
+<link href="{{ site.baseurl }}/assets/css/story-map/style.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/assets/css/story-map/style-desktop.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/assets/css/story-map/loader.css" rel="stylesheet">
+
+
+<script src="{{ site.baseurl }}/assets/js/jquery.min.js">
+
+  <script type="text/javascript" src="{{ site.baseurl }}/assets/markers/leaflet.extra-markers.min.js"></script>
+  <script type="text/javascript" src="{{ site.baseurl }}/assets/js/story-maps/constants.js"></script>
+  <script type="text/javascript" src="{{ site.baseurl }}/assets/js/story-maps/jquery.csv.js"></script>
+  <script type="text/javascript" src="{{ site.baseurl }}/assets/js/story-maps/storymap.js">
+
+
+</script>
+
+
+ <!-- Load Leaflet CSS and JS-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <!-- Load Leaflet basemap providers -->
+  <script src="https://unpkg.com/leaflet-providers@1.10.2/leaflet-providers.js"></script>
+
+
+</head>
+
+
+<body >
+	
+
+
+
+  <div id="narration">
+  
+  <div id="logo">
+  <img src = "{{site.baseurl}}/assets/images/logo.png">
+  </div>
+   <div id="map-header">
+		<h1>{{page.title}}</h1>
+	
+		
+  </div>
+ 
+    <div id="map-contents">
+
+      <div id="top">
+	  
+		<h2>{{page.subtitle}}</h2>
+		<div> {{content}} </div>
+	
+	  </div>
+	  
+    </div>
+  </div>
+
+  <div class="loader">Loading...</div>
+  
+  <div id="map"></div>
+
+<!-- Leaflet INSIDE THE BODY -->
+<!-- priveremeno je visina karte u SCSS -->
+ <script type="text/javascript">
+	var f = "{{ page.path | split: '/' | last }}" ;
+	f = f.replace('.md', '');
+	console.log(f)
+	load_story_map(f)
+	
+    // Create the Leaflet map with a generic start point
+    var map = L.map('map', {
+      center: [0, 0],
+      zoom: 1,
+      scrollWheelZoom: false,
+      zoomControl: false,
+      tap: false
+	  
+	 /* var logo = L.control({position: 'topleft'});
+	  logo.onAdd = function(map){
+        var div = L.DomUtil.create('div', 'myclass');
+        div.innerHTML= "<img src='logo.png'/>";
+        return div;
+		
+    }
+    logo.addTo(map);
+	  */
+	  
+    });
+  </script>
+
+
+
+  </script>
+
+l
+	
+
+
+
+
+</body> <!-- /.site-content -->
+
+
+</html>
